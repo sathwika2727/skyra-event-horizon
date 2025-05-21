@@ -15,7 +15,7 @@ const AboutUs = () => {
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-playfair">About Us</h1>
             <p className="text-xl max-w-3xl mx-auto">
-              Crafting unforgettable experiences with heart, vision, and precision since 2010.
+              Crafting unforgettable experiences with heart, vision, and precision.
             </p>
           </div>
         </div>
@@ -50,74 +50,13 @@ const AboutUs = () => {
                 alt="Event celebration" 
                 className="rounded-lg shadow-lg w-full"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded shadow-lg hidden md:block">
-                <div className="text-3xl font-bold text-primary font-playfair">10+</div>
-                <div className="text-gray-700">Years of Excellence</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What Makes Us Different */}
-      <section className="py-16 bg-light-purple">
-        <div className="container mx-auto px-4">
-          <h2 className="section-title text-center">What Makes Us Different?</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Creative Storytelling</h3>
-              <p className="text-gray-600">
-                Every event tells a story — we help you write yours with immersive themes and experiential designs.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Vendor Excellence</h3>
-              <p className="text-gray-600">
-                Our trusted network ensures quality catering, décor, and entertainment for every occasion.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Tech-Savvy Execution</h3>
-              <p className="text-gray-600">
-                From online RSVP systems to live streaming, we bring events into the digital age.
-              </p>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6">
-                <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-4">Client-First Philosophy</h3>
-              <p className="text-gray-600">
-                We treat your vision as our mission, with transparent communication and 100% customization.
-              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Mission and Vision */}
-      <section className="py-16">
+      <section className="py-16 bg-light-purple">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="bg-white p-8 rounded-lg shadow-md">
@@ -159,7 +98,7 @@ const AboutUs = () => {
       </section>
 
       {/* About Skyra Event Management */}
-      <section className="py-16 bg-light-purple">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="section-title text-center">About Skyra Event Management</h2>
           <p className="text-center text-lg mb-12 max-w-3xl mx-auto">

@@ -2,29 +2,37 @@
 import { Link } from 'react-router-dom';
 
 const ServiceCard = ({ service }) => {
+  // Get the corresponding emoji for each service type
+  const getServiceIcon = (slug) => {
+    switch(slug) {
+      case 'weddings':
+        return '🎂'; // Cake emoji for weddings
+      case 'corporate':
+        return '🏢'; // Building emoji for corporate events
+      case 'birthdays':
+        return '🎉'; // Party popper emoji for birthdays
+      case 'college':
+        return '🎓'; // Graduation cap for college events
+      case 'conferences':
+        return '🎓'; // Graduation cap for conferences
+      default:
+        return '📅'; // Calendar as default
+    }
+  };
+
   return (
-    <div className="service-card">
-      <img 
-        src={service.image} 
-        alt={service.title} 
-        className="service-card-img"
-      />
-      <div className="service-card-body">
-        <h3 className="text-2xl font-bold mb-3 font-playfair">{service.title}</h3>
-        <ul className="mb-4 space-y-2">
-          {service.features.slice(0, 4).map((feature, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-primary mr-2">•</span>
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="text-gray-700 mb-4">Starting from ${service.startingPrice}</p>
+    <div className="service-card h-full flex flex-col">
+      <div className="p-8 flex flex-col items-center text-center flex-grow">
+        <div className="text-5xl mb-6">{getServiceIcon(service.slug)}</div>
+        <h3 className="text-2xl font-bold mb-2">{service.title}</h3>
+        <p className="text-gray-600 mb-6">
+          {service.features && service.features.length > 0 ? service.features[0] : 'Event planning services'}
+        </p>
         <Link 
-          to={`/services/${service.slug}`}
-          className="btn-outline block text-center"
+          to={`/services/${service.slug}`} 
+          className="text-primary hover:underline mt-auto"
         >
-          View Details
+          Learn More
         </Link>
       </div>
     </div>

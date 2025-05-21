@@ -10,10 +10,7 @@ const services = [
     slug: "weddings",
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Ceremony planning",
-      "Reception management",
-      "Decor and floral design",
-      "Entertainment coordination"
+      "Complete wedding planning services"
     ],
     startingPrice: 2500
   },
@@ -22,10 +19,7 @@ const services = [
     slug: "birthdays",
     image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Theme selection",
-      "Venue arrangement",
-      "Party supplies",
-      "Games and activities"
+      "Special celebration planning"
     ],
     startingPrice: 700
   },
@@ -34,10 +28,7 @@ const services = [
     slug: "corporate",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     features: [
-      "Meeting and conference setup",
-      "Audio-visual equipment",
-      "Catering service",
-      "Logistics coordination"
+      "Professional meetings and conferences"
     ],
     startingPrice: 3000
   },
@@ -46,23 +37,19 @@ const services = [
     slug: "college",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Festival program planning",
-      "Stage and lighting setup",
-      "Artist booking",
-      "Security services"
+      "Festival program planning"
     ],
     startingPrice: 4000
+  },
+  {
+    title: "Conferences",
+    slug: "conferences",
+    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    features: [
+      "Professional event management"
+    ],
+    startingPrice: 3500
   }
-];
-
-// Service categories for tab navigation
-const categories = [
-  { id: "all", name: "All" },
-  { id: "weddings", name: "Weddings" },
-  { id: "birthdays", name: "Personal Celebrations" },
-  { id: "corporate", name: "Corporate Events" },
-  { id: "college", name: "College Events" },
-  { id: "conferences", name: "Conferences" }
 ];
 
 const Services = () => {
@@ -85,32 +72,10 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Service Categories */}
-      <section className="py-8 bg-white border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto pb-2 hide-scrollbar">
-            <div className="flex space-x-2 md:space-x-4 mx-auto">
-              {categories.map(category => (
-                <button
-                  key={category.id}
-                  className={`px-4 py-2 text-sm md:text-base whitespace-nowrap rounded-full transition-colors ${
-                    category.id === 'all' 
-                      ? 'bg-primary text-white' 
-                      : 'bg-gray-100 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Services Grid */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} />
             ))}

@@ -67,16 +67,6 @@ const Navbar = ({ scrolled }) => {
             >
               About Us
             </NavLink>
-            <NavLink 
-              to="/contact" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${
-                scrolled 
-                  ? (isActive ? 'text-primary' : 'text-gray-800') 
-                  : (isActive ? 'text-primary' : 'text-white')
-              }`}
-            >
-              Contact
-            </NavLink>
             <Link 
               to="/contact"
               className={`btn-primary py-2 px-4 text-sm ${
@@ -135,13 +125,6 @@ const Navbar = ({ scrolled }) => {
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
-            </NavLink>
-            <NavLink 
-              to="/contact" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${isActive ? 'text-primary' : 'text-gray-800'}`}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
             </NavLink>
             <Link 
               to="/contact"

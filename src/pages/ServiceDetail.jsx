@@ -103,6 +103,31 @@ const serviceDetails = {
       "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     ]
+  },
+  conferences: {
+    title: "Conference Management",
+    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    description: "Our comprehensive conference management services ensure your event runs smoothly from planning to execution. We handle all aspects of conference organization so you can focus on your content and attendees.",
+    features: [
+      "Venue selection and management",
+      "Registration and attendee services",
+      "Speaker coordination",
+      "Audio-visual and technical production",
+      "Exhibitor management",
+      "Catering and accommodation",
+      "Marketing and promotional materials",
+      "On-site staff coordination"
+    ],
+    pricing: {
+      basic: 3500,
+      standard: 7000,
+      premium: 15000
+    },
+    gallery: [
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+      "https://images.unsplash.com/photo-1552581234-26160f608093?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    ]
   }
 };
 
@@ -230,45 +255,6 @@ const ServiceDetail = () => {
                 <Link to="/contact" className="btn-primary">
                   Get a Custom Quote
                 </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 bg-light-purple">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center font-playfair">What Clients Say About Our {service.title}</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <svg className="h-8 w-8 text-primary mb-4" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-              </svg>
-              <p className="text-lg mb-4">
-                "Skyra Events exceeded our expectations with their attention to detail and creative approach. They transformed our vision into reality and made the entire process stress-free."
-              </p>
-              <div className="flex items-center">
-                <div className="ml-0">
-                  <p className="font-bold">Michael & Sarah</p>
-                  <p className="text-gray-600 text-sm">Recent Client</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <svg className="h-8 w-8 text-primary mb-4" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-              </svg>
-              <p className="text-lg mb-4">
-                "The team at Skyra handled everything professionally from start to finish. Their communication was excellent, and they delivered an event that our guests are still talking about."
-              </p>
-              <div className="flex items-center">
-                <div className="ml-0">
-                  <p className="font-bold">Jennifer Davis</p>
-                  <p className="text-gray-600 text-sm">Satisfied Customer</p>
-                </div>
               </div>
             </div>
           </div>
