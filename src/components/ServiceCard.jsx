@@ -22,7 +22,7 @@ const ServiceCard = ({ service }) => {
           to={`/services/${service.slug}`} 
           className="text-primary hover:underline mt-auto"
         >
-          Learn More
+          View Details
         </Link>
       </div>
     </div>

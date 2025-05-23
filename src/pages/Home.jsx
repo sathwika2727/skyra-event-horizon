@@ -29,28 +29,28 @@ const carouselImages = [
 
 const serviceCategories = [
   {
-    icon: "🎂",
     title: "Weddings",
     description: "Complete wedding planning services",
-    link: "/services/weddings"
+    link: "/services/weddings",
+    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
   },
   {
-    icon: "🏢",
     title: "Corporate Events",
     description: "Professional meetings and conferences",
-    link: "/services/corporate"
+    link: "/services/corporate",
+    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
   },
   {
-    icon: "🎉",
     title: "Birthdays",
     description: "Special celebration planning",
-    link: "/services/birthdays"
+    link: "/services/birthdays",
+    image: "https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
   },
   {
-    icon: "🎓",
     title: "Conferences",
     description: "Professional event management",
-    link: "/services/conferences"
+    link: "/services/conferences",
+    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80"
   }
 ];
 
@@ -96,14 +96,20 @@ const Home = () => {
                 key={index}
                 className="bg-white p-6 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
+                <div className="w-full h-48 mb-4 overflow-hidden rounded-lg">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
                 <Link 
                   to={service.link}
                   className="text-primary hover:underline font-medium"
                 >
-                  Learn More
+                  View Details
                 </Link>
               </div>
             ))}
