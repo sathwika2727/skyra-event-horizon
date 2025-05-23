@@ -54,24 +54,7 @@ const serviceCategories = [
   }
 ];
 
-const serviceGallery = [
-  {
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    alt: "Elegant wedding setup"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
-    alt: "Corporate event venue"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1603228254119-e6a4d095dc59?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    alt: "Birthday party decoration"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
-    alt: "Conference hall"
-  }
-];
+// Removing the serviceGallery array since it's no longer needed
 
 const Home = () => {
   useEffect(() => {
@@ -115,17 +98,7 @@ const Home = () => {
             ))}
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {serviceGallery.map((item, index) => (
-              <div key={index} className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src={item.image} 
-                  alt={item.alt} 
-                  className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-            ))}
-          </div>
+          {/* Removed the serviceGallery grid that was here */}
           
           <div className="text-center mt-10">
             <Link to="/services" className="btn-primary">
