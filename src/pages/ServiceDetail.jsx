@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -7,6 +8,7 @@ const serviceDetails = {
   weddings: {
     title: "Wedding Planning Services",
     image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     description: "Our wedding planning services are designed to make your special day truly memorable. We handle everything from venue selection to the final send-off, ensuring a stress-free experience for you and your loved ones.",
     features: [
       "Venue selection and coordination",
@@ -24,14 +26,17 @@ const serviceDetails = {
       premium: { price: 8500, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
-      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
-      "https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1606216794074-735e91aa2c92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80",
+      "https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587&q=80",
+      "https://images.unsplash.com/photo-1591604466107-ec97de577aff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     ]
   },
   birthdays: {
     title: "Birthday Party Planning",
     image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80",
     description: "Make your birthday celebration unforgettable with our custom party planning services. From intimate gatherings to extravagant celebrations, we create memorable experiences for all ages.",
     features: [
       "Creative theme development and execution",
@@ -57,6 +62,7 @@ const serviceDetails = {
   corporate: {
     title: "Corporate Event Management",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     description: "Elevate your company events with our professional corporate event management services. From conferences and meetings to team building activities and company celebrations, we deliver polished, impactful events.",
     features: [
       "Strategic event planning and execution",
@@ -82,6 +88,7 @@ const serviceDetails = {
   college: {
     title: "College Event Production",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     description: "Our college event production services bring your campus events to life. From cultural festivals and academic conferences to graduation ceremonies, we deliver exceptional experiences for students, faculty, and alumni.",
     features: [
       "Festival and event concept development",
@@ -107,6 +114,7 @@ const serviceDetails = {
   conferences: {
     title: "Conference Management",
     image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    backgroundImage: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     description: "Our comprehensive conference management services ensure your event runs smoothly from planning to execution. We handle all aspects of conference organization so you can focus on your content and attendees.",
     features: [
       "Venue selection and management",
@@ -158,10 +166,15 @@ const ServiceDetail = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="bg-light-purple py-24 md:py-32">
+      {/* Hero Section with Background Image */}
+      <section 
+        className="relative py-24 md:py-32 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${service.backgroundImage})`
+        }}
+      >
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex flex-col md:flex-row justify-between items-center text-white">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 font-playfair">{service.title}</h1>
               <p className="text-xl max-w-2xl">
@@ -169,7 +182,7 @@ const ServiceDetail = () => {
               </p>
             </div>
             <div className="mt-8 md:mt-0">
-              <Link to="/contact" className="btn-primary">
+              <Link to="/contact" className="bg-primary text-white px-8 py-3 rounded hover:bg-purple-600 transition-colors">
                 Book Now
               </Link>
             </div>
@@ -208,14 +221,20 @@ const ServiceDetail = () => {
             </div>
           </div>
 
-          {/* Portfolio/Gallery Section */}
+          {/* Portfolio/Gallery Section with Functional Carousel */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold mb-8 font-playfair text-center">Portfolio</h2>
-            <div className="max-w-4xl mx-auto">
-              <Carousel className="w-full">
-                <CarouselContent>
+            <div className="max-w-4xl mx-auto relative">
+              <Carousel 
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4">
                   {service.gallery.map((img, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
                       <div className="p-1">
                         <img 
                           src={img} 
@@ -226,8 +245,8 @@ const ServiceDetail = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselPrevious />
-                <CarouselNext />
+                <CarouselPrevious className="left-2" />
+                <CarouselNext className="right-2" />
               </Carousel>
             </div>
           </div>
@@ -237,14 +256,19 @@ const ServiceDetail = () => {
             <h2 className="text-3xl font-bold mb-8 font-playfair text-center">Packages</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {Object.entries(service.pricing).map(([key, pkg]) => (
-                <div key={key} className={`bg-white p-8 rounded-lg shadow-lg border-2 ${key === 'premium' ? 'border-primary' : 'border-gray-100'} text-center`}>
+                <div key={key} className={`bg-white p-8 rounded-lg shadow-lg border-2 ${key === 'standard' ? 'border-primary transform scale-105' : 'border-gray-100'} text-center relative ${key === 'standard' ? 'z-10' : ''}`}>
+                  {key === 'standard' && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">
+                      Most Popular
+                    </div>
+                  )}
                   <h3 className="text-2xl font-bold mb-4 font-playfair">{pkg.name}</h3>
                   <div className="text-4xl font-bold text-primary mb-4">₹{pkg.price.toLocaleString()}</div>
                   <p className="text-gray-600 mb-6">{pkg.description}</p>
                   <Link 
                     to="/contact" 
                     className={`w-full block py-3 px-6 rounded transition-colors ${
-                      key === 'premium' 
+                      key === 'standard' 
                         ? 'bg-primary text-white hover:bg-purple-600' 
                         : 'border border-primary text-primary hover:bg-primary hover:text-white'
                     }`}
