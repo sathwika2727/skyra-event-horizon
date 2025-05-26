@@ -1,12 +1,12 @@
-
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
-// Service data
+// Service data with updated Indian wedding images
 const serviceDetails = {
   weddings: {
     title: "Wedding Planning Services",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     description: "Our wedding planning services are designed to make your special day truly memorable. We handle everything from venue selection to the final send-off, ensuring a stress-free experience for you and your loved ones.",
     features: [
       "Venue selection and coordination",
@@ -19,14 +19,14 @@ const serviceDetails = {
       "Rehearsal dinner planning"
     ],
     pricing: {
-      basic: 2500,
-      standard: 5000,
-      premium: 8500
+      basic: { price: 2500, name: "Basic Package", description: "Essential services to get your event off the ground. Ideal for those with a limited budget." },
+      standard: { price: 5000, name: "Standard Package", description: "Our most popular option with a balance of quality services and value. Perfect for most events." },
+      premium: { price: 8500, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
-      "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+      "https://images.unsplash.com/photo-1500673922987-e212871fec22?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+      "https://images.unsplash.com/photo-1466442929976-97f336a657be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
     ]
   },
   birthdays: {
@@ -44,9 +44,9 @@ const serviceDetails = {
       "Setup and cleanup services"
     ],
     pricing: {
-      basic: 700,
-      standard: 1500,
-      premium: 3000
+      basic: { price: 700, name: "Basic Package", description: "Essential services to get your event off the ground. Ideal for those with a limited budget." },
+      standard: { price: 1500, name: "Standard Package", description: "Our most popular option with a balance of quality services and value. Perfect for most events." },
+      premium: { price: 3000, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
       "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1474&q=80",
@@ -69,9 +69,9 @@ const serviceDetails = {
       "Post-event reporting and analytics"
     ],
     pricing: {
-      basic: 3000,
-      standard: 7500,
-      premium: 15000
+      basic: { price: 3000, name: "Basic Package", description: "Essential services to get your event off the ground. Ideal for those with a limited budget." },
+      standard: { price: 7500, name: "Standard Package", description: "Our most popular option with a balance of quality services and value. Perfect for most events." },
+      premium: { price: 15000, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
       "https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
@@ -94,9 +94,9 @@ const serviceDetails = {
       "Event logistics and volunteer coordination"
     ],
     pricing: {
-      basic: 4000,
-      standard: 8000,
-      premium: 15000
+      basic: { price: 4000, name: "Basic Package", description: "Essential services to get your event off the ground. Ideal for those with a limited budget." },
+      standard: { price: 8000, name: "Standard Package", description: "Our most popular option with a balance of quality services and value. Perfect for most events." },
+      premium: { price: 15000, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
       "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -119,9 +119,9 @@ const serviceDetails = {
       "On-site staff coordination"
     ],
     pricing: {
-      basic: 3500,
-      standard: 7000,
-      premium: 15000
+      basic: { price: 3500, name: "Basic Package", description: "Essential services to get your event off the ground. Ideal for those with a limited budget." },
+      standard: { price: 7000, name: "Standard Package", description: "Our most popular option with a balance of quality services and value. Perfect for most events." },
+      premium: { price: 15000, name: "Premium Package", description: "The ultimate event experience with all premium services and dedicated support throughout." }
     },
     gallery: [
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
@@ -177,35 +177,14 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      {/* Service Features */}
+      {/* Service Content */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Left Column - What's Offered */}
             <div>
-              <img 
-                src={service.image} 
-                alt={service.title} 
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-              
-              <div className="mt-10">
-                <h2 className="text-3xl font-bold mb-6 font-playfair">Image Gallery</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {service.gallery.map((img, index) => (
-                    <img 
-                      key={index} 
-                      src={img} 
-                      alt={`${service.title} ${index + 1}`} 
-                      className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <h2 className="text-3xl font-bold mb-6 font-playfair">What We Offer</h2>
-              <ul className="space-y-4">
+              <h2 className="text-3xl font-bold mb-6 font-playfair">What's Offered</h2>
+              <ul className="space-y-4 mb-10">
                 {service.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
                     <span className="h-6 w-6 rounded-full bg-primary/20 flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
@@ -217,60 +196,78 @@ const ServiceDetail = () => {
                   </li>
                 ))}
               </ul>
-              
-              <h2 className="text-3xl font-bold mt-12 mb-6 font-playfair">Pricing Packages</h2>
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-bold">Basic Package</h3>
-                    <p className="text-2xl font-bold text-primary">${service.pricing.basic}</p>
-                  </div>
-                  <p className="text-gray-600">
-                    Essential services to get your event off the ground. Ideal for those with a limited budget.
-                  </p>
+            </div>
+
+            {/* Right Column - Main Image */}
+            <div>
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+
+          {/* Portfolio/Gallery Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold mb-8 font-playfair text-center">Portfolio</h2>
+            <div className="max-w-4xl mx-auto">
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {service.gallery.map((img, index) => (
+                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <img 
+                          src={img} 
+                          alt={`${service.title} ${index + 1}`} 
+                          className="w-full h-64 object-cover rounded-lg shadow-md"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious />
+                <CarouselNext />
+              </Carousel>
+            </div>
+          </div>
+
+          {/* Packages Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold mb-8 font-playfair text-center">Packages</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {Object.entries(service.pricing).map(([key, pkg]) => (
+                <div key={key} className={`bg-white p-8 rounded-lg shadow-lg border-2 ${key === 'premium' ? 'border-primary' : 'border-gray-100'} text-center`}>
+                  <h3 className="text-2xl font-bold mb-4 font-playfair">{pkg.name}</h3>
+                  <div className="text-4xl font-bold text-primary mb-4">₹{pkg.price.toLocaleString()}</div>
+                  <p className="text-gray-600 mb-6">{pkg.description}</p>
+                  <Link 
+                    to="/contact" 
+                    className={`w-full block py-3 px-6 rounded transition-colors ${
+                      key === 'premium' 
+                        ? 'bg-primary text-white hover:bg-purple-600' 
+                        : 'border border-primary text-primary hover:bg-primary hover:text-white'
+                    }`}
+                  >
+                    Choose Package
+                  </Link>
                 </div>
-                
-                <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-bold">Standard Package</h3>
-                    <p className="text-2xl font-bold text-primary">${service.pricing.standard}</p>
-                  </div>
-                  <p className="text-gray-600">
-                    Our most popular option with a balance of quality services and value. Perfect for most events.
-                  </p>
-                </div>
-                
-                <div className="bg-white p-6 rounded-lg shadow-md border border-primary/30">
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-bold">Premium Package</h3>
-                    <p className="text-2xl font-bold text-primary">${service.pricing.premium}</p>
-                  </div>
-                  <p className="text-gray-600">
-                    The ultimate event experience with all premium services and dedicated support throughout.
-                  </p>
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <Link to="/contact" className="btn-primary">
-                  Get a Custom Quote
-                </Link>
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
+      <section className="py-16 bg-primary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-playfair">Ready to Create Your Perfect {serviceType.charAt(0).toUpperCase() + serviceType.slice(1)} Event?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-playfair text-white">Ready to Create Your Perfect {serviceType.charAt(0).toUpperCase() + serviceType.slice(1)} Event?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto text-white">
             Let's bring your vision to life. Contact us today to start planning your unforgettable experience.
           </p>
           <Link 
             to="/contact"
-            className="btn-primary"
+            className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded font-medium transition-colors inline-block"
           >
             Start Planning Now
           </Link>

@@ -39,7 +39,7 @@ const Navbar = ({ scrolled }) => {
           <nav className="hidden md:flex items-center space-x-8">
             <NavLink 
               to="/" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${
                 scrolled 
                   ? (isActive ? 'text-primary' : 'text-gray-800') 
                   : (isActive ? 'text-primary' : 'text-white')
@@ -49,7 +49,7 @@ const Navbar = ({ scrolled }) => {
             </NavLink>
             <NavLink 
               to="/services" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${
                 scrolled 
                   ? (isActive ? 'text-primary' : 'text-gray-800') 
                   : (isActive ? 'text-primary' : 'text-white')
@@ -59,7 +59,7 @@ const Navbar = ({ scrolled }) => {
             </NavLink>
             <NavLink 
               to="/about-us" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${
                 scrolled 
                   ? (isActive ? 'text-primary' : 'text-gray-800') 
                   : (isActive ? 'text-primary' : 'text-white')
@@ -69,8 +69,8 @@ const Navbar = ({ scrolled }) => {
             </NavLink>
             <Link 
               to="/contact"
-              className={`btn-primary py-2 px-4 text-sm ${
-                !scrolled && 'hover:bg-white hover:text-primary'
+              className={`btn-primary py-2 px-4 text-sm hover:bg-purple-800 transition-colors ${
+                !scrolled && 'hover:bg-purple-800 hover:text-white'
               }`}
             >
               Book Now
@@ -107,28 +107,28 @@ const Navbar = ({ scrolled }) => {
           <nav className="flex flex-col space-y-4 py-4">
             <NavLink 
               to="/" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${isActive ? 'text-primary' : 'text-gray-800'}`}
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${isActive ? 'text-primary' : 'text-gray-800'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </NavLink>
             <NavLink 
               to="/services" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${isActive ? 'text-primary' : 'text-gray-800'}`}
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${isActive ? 'text-primary' : 'text-gray-800'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </NavLink>
             <NavLink 
               to="/about-us" 
-              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-primary ${isActive ? 'text-primary' : 'text-gray-800'}`}
+              className={({ isActive }) => `text-sm uppercase tracking-wider font-medium hover:text-purple-800 transition-colors ${isActive ? 'text-primary' : 'text-gray-800'}`}
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
             </NavLink>
             <Link 
               to="/contact"
-              className="btn-primary py-2 px-4 text-sm text-center"
+              className="btn-primary py-2 px-4 text-sm text-center hover:bg-purple-800 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               Book Now
