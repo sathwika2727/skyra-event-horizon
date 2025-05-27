@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
-const AutoCarousel = ({ images, autoScrollInterval = 3000, className = "" }) => {
+const AutoCarousel = ({ images, autoScrollInterval = 2000, className = "" }) => {
   const [api, setApi] = useState();
 
   useEffect(() => {

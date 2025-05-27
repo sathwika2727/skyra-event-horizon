@@ -126,13 +126,12 @@ const Services = () => {
             <div className="bg-white p-8 rounded-lg shadow-md">
               <div className="h-16 w-16 bg-primary/20 rounded-full flex items-center justify-center mb-6 mx-auto">
                 <svg className="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-center">Venue Selection</h3>
+              <h3 className="text-xl font-bold mb-4 text-center">Event Coordination</h3>
               <p className="text-gray-600 text-center">
-                Find the perfect venue for your event with our extensive network of locations and relationships.
+                Professional event coordination and management to ensure your event runs smoothly from start to finish.
               </p>
             </div>
           </div>

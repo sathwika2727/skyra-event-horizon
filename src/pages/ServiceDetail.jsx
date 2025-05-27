@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AutoCarousel from '../components/AutoCarousel';
@@ -345,7 +346,7 @@ const PackageBookingModal = ({ packageData, serviceName }) => {
                 Event Information
               </h4>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <FormField
                   control={form.control}
                   name="eventType"
@@ -383,48 +384,46 @@ const PackageBookingModal = ({ packageData, serviceName }) => {
                 />
               </div>
               
-              <div className="mt-4">
-                <FormField
-                  control={form.control}
-                  name="eventDate"
-                  render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel className="text-gray-700 font-medium">Preferred Event Date</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant="outline"
-                              className={cn(
-                                "w-full pl-3 text-left font-normal border-purple-200 hover:border-purple-400",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick your event date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) => date < new Date()}
-                            initialFocus
-                            className="pointer-events-auto"
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+              <FormField
+                control={form.control}
+                name="eventDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel className="text-gray-700 font-medium">Preferred Event Date</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant="outline"
+                            className={cn(
+                              "w-full pl-3 text-left font-normal border-purple-200 hover:border-purple-400",
+                              !field.value && "text-muted-foreground"
+                            )}
+                          >
+                            {field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick your event date</span>
+                            )}
+                            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={field.value}
+                          onSelect={field.onChange}
+                          disabled={(date) => date < new Date()}
+                          initialFocus
+                          className="p-3 pointer-events-auto"
+                        />
+                      </PopoverContent>
+                    </Popover>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
             </div>
             
             <Button 
@@ -524,7 +523,7 @@ const ServiceDetail = () => {
           {/* Portfolio/Gallery Section with Auto-moving Carousel */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold mb-8 font-playfair text-center">Portfolio</h2>
-            <AutoCarousel images={service.gallery} autoScrollInterval={4000} />
+            <AutoCarousel images={service.gallery} autoScrollInterval={2000} />
           </div>
 
           {/* Packages Section */}
