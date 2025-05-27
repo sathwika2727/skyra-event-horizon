@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AutoCarousel from '../components/AutoCarousel';
@@ -12,6 +11,14 @@ import { CalendarIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
 import { cn } from '@/lib/utils';
+import emailjs from '@emailjs/browser';
+
+// EmailJS configuration - replace with your actual credentials
+const EMAILJS_CONFIG = {
+  SERVICE_ID: 'your_service_id', // Replace with your EmailJS service ID
+  TEMPLATE_ID: 'your_template_id', // Replace with your EmailJS template ID
+  PUBLIC_KEY: 'your_public_key' // Replace with your EmailJS public key
+};
 
 // Service data with Skyra packages
 const serviceDetails = {
@@ -247,6 +254,7 @@ const serviceDetails = {
 };
 
 const PackageBookingModal = ({ packageData, serviceName }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm({
     defaultValues: {
       name: '',
@@ -257,13 +265,55 @@ const PackageBookingModal = ({ packageData, serviceName }) => {
     }
   });
 
-  const onSubmit = (data) => {
-    const formattedData = {
-      ...data,
-      eventDate: data.eventDate ? format(data.eventDate, 'PPP') : 'Not specified'
-    };
-    console.log('Form submitted:', formattedData);
-    alert(`Thank you ${data.name}! We'll contact you soon about your ${data.selectedPackage} for ${data.eventType}.`);
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    
+    try {
+      const formattedData = {
+        ...data,
+        eventDate: data.eventDate ? format(data.eventDate, 'PPP') : 'Not specified',
+        packagePrice: `₹${packageData.price.toLocaleString()}`,
+        packageDescription: packageData.description
+      };
+
+      // Prepare EmailJS template parameters
+      const templateParams = {
+        to_name: 'Skyra Events Team',
+        from_name: formattedData.name,
+        customer_name: formattedData.name,
+        customer_phone: formattedData.phone,
+        event_type: formattedData.eventType,
+        selected_package: formattedData.selectedPackage,
+        package_price: formattedData.packagePrice,
+        event_date: formattedData.eventDate,
+        package_description: formattedData.packageDescription,
+        message: `New booking request for ${formattedData.selectedPackage} - ${formattedData.eventType}`
+      };
+
+      console.log('Sending email with data:', templateParams);
+
+      // Send email via EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', result);
+      
+      // Success message
+      alert(`Thank you ${data.name}! Your booking request has been sent successfully. We'll contact you soon about your ${data.selectedPackage} for ${data.eventType}.`);
+      
+      // Reset form
+      form.reset();
+      
+    } catch (error) {
+      console.error('Error sending email:', error);
+      alert('Sorry, there was an error sending your booking request. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -428,9 +478,10 @@ const PackageBookingModal = ({ packageData, serviceName }) => {
             
             <Button 
               type="submit" 
-              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-lg font-semibold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-lg font-semibold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:transform-none"
             >
-              Submit Booking Request
+              {isSubmitting ? 'Sending Request...' : 'Submit Booking Request'}
             </Button>
           </form>
         </Form>
