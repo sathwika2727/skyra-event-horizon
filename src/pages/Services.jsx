@@ -3,52 +3,61 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 
-// Service data
+// Service data with Skyra packages
 const services = [
   {
     title: "Weddings",
     slug: "weddings",
     image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Complete wedding planning services"
+      "Complete wedding planning services with photography, décor, and catering"
     ],
-    startingPrice: 2500
+    startingPrice: 129999
   },
   {
     title: "Birthday Parties",
     slug: "birthdays",
     image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Special celebration planning"
+      "Themed birthday celebrations with décor, entertainment, and photography"
     ],
-    startingPrice: 700
+    startingPrice: 14999
   },
   {
     title: "Corporate Events",
     slug: "corporate",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     features: [
-      "Professional meetings and conferences"
+      "Professional corporate events, meetings, and gala dinners"
     ],
-    startingPrice: 3000
+    startingPrice: 69999
   },
   {
     title: "College Fests",
     slug: "college",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     features: [
-      "Festival program planning"
+      "Cultural and technical college festivals with stage setup and entertainment"
     ],
-    startingPrice: 4000
+    startingPrice: 149999
   },
   {
-    title: "Conferences",
-    slug: "conferences",
-    image: "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    title: "Anniversary Celebrations",
+    slug: "anniversaries",
+    image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
     features: [
-      "Professional event management"
+      "Intimate to grand anniversary celebrations with custom décor and entertainment"
     ],
-    startingPrice: 3500
+    startingPrice: 19999
+  },
+  {
+    title: "Baby Showers",
+    slug: "babyshowers",
+    image: "https://images.unsplash.com/photo-1576649547700-ee7163d580cc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    features: [
+      "Sweet baby shower celebrations with themed décor and memory capturing"
+    ],
+    startingPrice: 14999
   }
 ];
 
@@ -63,7 +72,7 @@ const Services = () => {
       <section className="bg-light-purple py-24 md:py-32">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-playfair">Our Services</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 font-playfair">Our Skyra Event Services</h1>
             <p className="text-xl max-w-3xl mx-auto">
               From weddings to corporate gatherings, we offer comprehensive event planning and 
               management services tailored to your unique needs and vision.
