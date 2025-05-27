@@ -5,7 +5,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { CalendarIcon } from 'lucide-react';
+import { format } from 'date-fns';
 import { useForm } from 'react-hook-form';
+import { cn } from '@/lib/utils';
 
 // Service data with Skyra packages
 const serviceDetails = {
@@ -13,7 +18,7 @@ const serviceDetails = {
     title: "Wedding Planning Services",
     image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
     backgroundImage: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    description: "Our wedding planning services are designed to make your special day truly memorable. We handle everything from venue selection to the final send-off, ensuring a stress-free experience for you and your loved ones.",
+    description: "Our wedding planning services are designed to make your special day truly memorable. We handle everything from photography to the final send-off, ensuring a stress-free experience for you and your loved ones.",
     features: [
       "Complete photography and videography coverage",
       "Custom theme décor and staging",
@@ -56,7 +61,7 @@ const serviceDetails = {
     description: "Make your birthday celebration unforgettable with our custom party planning services. From intimate gatherings to extravagant celebrations, we create memorable experiences for all ages.",
     features: [
       "Creative theme development and execution",
-      "Venue selection and decoration",
+      "Decoration and setup",
       "Entertainment planning and coordination", 
       "Custom cake and catering arrangements",
       "Party favors and gift coordination",
@@ -94,7 +99,6 @@ const serviceDetails = {
     description: "Elevate your company events with our professional corporate event management services. From conferences and meetings to team building activities and company celebrations, we deliver polished, impactful events.",
     features: [
       "Strategic event planning and execution",
-      "Venue selection and negotiation",
       "Registration and attendee management",
       "Audio-visual and technical support",
       "Speaker and VIP coordination",
@@ -116,7 +120,7 @@ const serviceDetails = {
       executive: { 
         price: 229999, 
         name: "Executive Gala Package", 
-        description: "For gala dinners and awards. Luxury venue + decor, sit-down dinner, live acts, red carpet, media coverage." 
+        description: "For gala dinners and awards. Luxury decor, sit-down dinner, live acts, red carpet, media coverage." 
       }
     },
     gallery: [
@@ -132,7 +136,7 @@ const serviceDetails = {
     description: "Our college event production services bring your campus events to life. From cultural festivals and academic conferences to graduation ceremonies, we deliver exceptional experiences for students, faculty, and alumni.",
     features: [
       "Festival and event concept development",
-      "Campus venue coordination",
+      "Campus coordination",
       "Stage design and production",
       "Talent booking and management",
       "Security and crowd management",
@@ -170,7 +174,7 @@ const serviceDetails = {
     description: "Celebrate your love story with our anniversary celebration services. From intimate gatherings to grand milestone celebrations, we create memorable experiences that honor your journey together.",
     features: [
       "Custom anniversary theme development",
-      "Venue selection and decoration",
+      "Decoration and setup",
       "Photography and videography services",
       "Catering and dining arrangements",
       "Entertainment coordination",
@@ -247,89 +251,191 @@ const PackageBookingModal = ({ packageData, serviceName }) => {
       name: '',
       phone: '',
       eventType: serviceName,
-      selectedPackage: packageData.name
+      selectedPackage: packageData.name,
+      eventDate: undefined
     }
   });
 
   const onSubmit = (data) => {
-    console.log('Form submitted:', data);
+    const formattedData = {
+      ...data,
+      eventDate: data.eventDate ? format(data.eventDate, 'PPP') : 'Not specified'
+    };
+    console.log('Form submitted:', formattedData);
     alert(`Thank you ${data.name}! We'll contact you soon about your ${data.selectedPackage} for ${data.eventType}.`);
   };
 
   return (
-    <DialogContent className="sm:max-w-md">
-      <DialogHeader>
-        <DialogTitle>Book {packageData.name}</DialogTitle>
+    <DialogContent className="sm:max-w-2xl max-h-[90vh] overflow-y-auto bg-gradient-to-br from-purple-50 to-pink-50">
+      <DialogHeader className="border-b border-purple-100 pb-4">
+        <DialogTitle className="text-2xl font-bold text-primary bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          Book {packageData.name}
+        </DialogTitle>
       </DialogHeader>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Full Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your full name" {...field} required />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="phone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your phone number" {...field} required />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="eventType"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Event Type</FormLabel>
-                <FormControl>
-                  <Input {...field} readOnly className="bg-gray-50" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <FormField
-            control={form.control}
-            name="selectedPackage"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Selected Package</FormLabel>
-                <FormControl>
-                  <Input {...field} readOnly className="bg-gray-50" />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h4 className="font-semibold mb-2">Package Details:</h4>
-            <p className="text-sm text-gray-600 mb-2">{packageData.description}</p>
-            <p className="text-lg font-bold text-primary">₹{packageData.price.toLocaleString()}</p>
+      
+      <div className="space-y-6 pt-4">
+        {/* Package Summary Card */}
+        <div className="bg-white rounded-xl shadow-lg border border-purple-100 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-gray-800">{packageData.name}</h3>
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full">
+              <span className="text-lg font-bold">₹{packageData.price.toLocaleString()}</span>
+            </div>
           </div>
-          
-          <Button type="submit" className="w-full">
-            Submit Booking Request
-          </Button>
-        </form>
-      </Form>
+          <p className="text-gray-600 leading-relaxed">{packageData.description}</p>
+        </div>
+
+        {/* Booking Form */}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="bg-white rounded-xl shadow-lg border border-purple-100 p-6">
+              <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 5a1 1 0 112 0v3a1 1 0 11-2 0V5zM9 13a1 1 0 112 0 1 1 0 01-2 0z" clipRule="evenodd" />
+                </svg>
+                Your Details
+              </h4>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-medium">Full Name</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your full name" 
+                          {...field} 
+                          required 
+                          className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-medium">Phone Number</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Enter your phone number" 
+                          {...field} 
+                          required 
+                          className="border-purple-200 focus:border-purple-400 focus:ring-purple-400"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg border border-purple-100 p-6">
+              <h4 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+                </svg>
+                Event Information
+              </h4>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="eventType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-medium">Event Type</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          readOnly 
+                          className="bg-purple-50 border-purple-200"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="selectedPackage"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-medium">Selected Package</FormLabel>
+                      <FormControl>
+                        <Input 
+                          {...field} 
+                          readOnly 
+                          className="bg-purple-50 border-purple-200"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              
+              <div className="mt-4">
+                <FormField
+                  control={form.control}
+                  name="eventDate"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-col">
+                      <FormLabel className="text-gray-700 font-medium">Preferred Event Date</FormLabel>
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <FormControl>
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full pl-3 text-left font-normal border-purple-200 hover:border-purple-400",
+                                !field.value && "text-muted-foreground"
+                              )}
+                            >
+                              {field.value ? (
+                                format(field.value, "PPP")
+                              ) : (
+                                <span>Pick your event date</span>
+                              )}
+                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                            </Button>
+                          </FormControl>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-auto p-0" align="start">
+                          <Calendar
+                            mode="single"
+                            selected={field.value}
+                            onSelect={field.onChange}
+                            disabled={(date) => date < new Date()}
+                            initialFocus
+                            className="pointer-events-auto"
+                          />
+                        </PopoverContent>
+                      </Popover>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            
+            <Button 
+              type="submit" 
+              className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white py-3 text-lg font-semibold rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105"
+            >
+              Submit Booking Request
+            </Button>
+          </form>
+        </Form>
+      </div>
     </DialogContent>
   );
 };
